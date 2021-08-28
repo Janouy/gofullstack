@@ -3,11 +3,12 @@ const router = express.Router();
 
 
 const auth = require('../middleware/auth'); 
+const multer = require('../middleware/multer-config');
 
 const stuffCtrl = require ('../controllers/stuff');
 
-router.post('/', auth, stuffCtrl.createThing);
-router.put('/:id', auth, stuffCtrl.modifyThing);
+router.post('/', auth, multer, stuffCtrl.createThing);
+router.put('/:id', auth, multer, stuffCtrl.modifyThing);
 router.delete('/:id',auth, stuffCtrl.deleteThing);  
 router.get('/:id', auth, stuffCtrl.getAllThings);
 router.get('/', auth ,stuffCtrl.getOneThing);
